@@ -20,17 +20,21 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
 
-from products.views import ProductListView, productlistview
+from products.views import (
+    ProductListView, productlistview, ProductDetailView, productdetailview
+)
 from .views import index, about, contact, register, login
 
 urlpatterns = [
     url(r'^$', index),
-    url(r'^about/', about),
-    url(r'^contact/', contact),
-    url(r'^register/', register),
-    url(r'^login/', login),
-    url(r'^products/', ProductListView.as_view()),
-    url(r'^products-func/', productlistview),
+    url(r'^about/$', about),
+    url(r'^contact/$', contact),
+    url(r'^register/$', register),
+    url(r'^login/$', login),
+    url(r'^products/$', ProductListView.as_view()),
+    url(r'^products-func/$', productlistview),
+    url(r'^products/(?P<pk>\d+)/$', ProductDetailView.as_view()),
+    url(r'^products-func/(?P<id>\d+)/$', productdetailview),
     url(r'^admin/', admin.site.urls),
     
 ]
