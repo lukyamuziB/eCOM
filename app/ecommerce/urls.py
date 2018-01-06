@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.conf.urls import url
 from django.contrib import admin
 
+from products.views import ProductListView, productlistview
 from .views import index, about, contact, register, login
 
 urlpatterns = [
@@ -28,7 +29,10 @@ urlpatterns = [
     url(r'^contact/', contact),
     url(r'^register/', register),
     url(r'^login/', login),
+    url(r'^products/', ProductListView.as_view()),
+    url(r'^products-func/', productlistview),
     url(r'^admin/', admin.site.urls),
+    
 ]
 
 if settings.DEBUG:
