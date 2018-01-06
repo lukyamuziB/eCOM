@@ -119,7 +119,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#Authentication backends
-# AUTHENTICATION_BACKENDS = (
-#         'django.contrib.auth.backends.ModelBackend'
-#     )
+#stores the static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "ecom_static"),
+]
+
+#serves the satatic files
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "static_root")
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
